@@ -1,0 +1,37 @@
+{%extends  'homenav.html'%}
+  {% block check %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete</title>
+</head>
+<body>
+<form method="post">
+    {%csrf_token%}
+     <div class="form-group">
+    <label >username</label>
+    <input type="id" class="form-control"  placeholder="Enter username" name="id">
+  </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    <form>
+         <table width="100%" border="1">
+       {%for intake in  intakes%}
+             <tr>
+                <td>{{intake.id}}</td>
+                <td>{{intake.username}}</td>
+                  <td>{{intake.email}}</td>
+                  <td>{{intake.password}}</td>
+                    <br>
+
+
+             </tr>
+
+
+
+    {%endfor%}
+       </table>
+</body>
+</html>
+      {%endblock%}
