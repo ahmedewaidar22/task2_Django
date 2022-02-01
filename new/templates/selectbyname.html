@@ -17,6 +17,7 @@
 
 </form>
  <table width="100%" border="1">
+       {%for intake in  intakes%}
 
              <tr>
                 <td>{{intake.id}}</td>
@@ -29,6 +30,7 @@
              </tr>
 
 
+    {%endfor%}
 
 
        </table>

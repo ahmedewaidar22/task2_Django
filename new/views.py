@@ -32,7 +32,7 @@ def selectbyname(request):
         return render(request, 'selectbyname.html')
     else:
          username = request.POST['username']
-         intakes =Intake.objects.filter(username=username)
+         intakes = Intake.objects.all().filter(username=username)
          context['intakes'] = intakes
          return render(request, 'selectbyname.html',context)
 def selectall(request):
@@ -61,13 +61,14 @@ def login(request):
 
         email = request.POST['email']
         password = request.POST['password']
-        intakes=Intake.objects.all()
+        intakes = Intake.objects.all().filter(email=email, password=password)
+
         for intake in intakes:
 
             if intake.email==email and intake.password==password:
                 return  redirect("homenav")
             else:
-                return render(request, "login")
+                return render(request, "login.html")
 
 
 
