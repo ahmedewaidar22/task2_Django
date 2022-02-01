@@ -40,6 +40,14 @@ def selectall(request):
     context['intakes'] = intakes
     return render(request, 'selectall.html',context)
 def update(request):
+    if (request.method == 'GET'):
+        return render(request, 'update.html')
+    else:
+        id = request.POST['id']
+        username = request.POST['username']
+        email = request.POST['email']
+        password =request.POST['password']
+        Intake.objects.filter(id=id).update(username=username,email=email,password=password)
     return render(request, 'update.html')
 def homenav(request):
     return render(request, 'homenav.html')
